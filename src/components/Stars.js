@@ -1,9 +1,18 @@
 import React from "react";
 import Star from "./Star";
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  count: PropTypes.number.isRequired,
+};
+
+const defaultProps = {
+  count: 0,
+};
 
 const Stars = (props) => {
   let li = [];
-  if (!(typeof props.count === "number" && props.count >= 0 && props.count <= 5)) {
+  if (!(props.count >= 0 && props.count <= 5)) {
     return null;
   }  
     
@@ -13,8 +22,7 @@ const Stars = (props) => {
   return <ul className="ulStar">{li}</ul>;
 };
 
-Stars.defaultProps = {
-  count: 0,
-};
+Stars.propTypes = propTypes;
+Stars.defaultProps = defaultProps;
 
 export default Stars;
